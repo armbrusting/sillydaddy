@@ -13,9 +13,11 @@
 		 <div class="span1" id="picvotes<%= photo.id %>" style="text-align:center">
 		  <h4>Silly Score:</h4>
 		  <h4><%= photo.votes.count %></h4>
-		  <% if user_signed_in? %>   
+<div id="like_form<%= photo.id %>">   		  
+<% if user_signed_in? %>
  		  <%= render 'like_form', :photo => photo %>
 		  <% end %>
+</div>
 		 </div>
 		 <div class="span7" id="photo">
 		  <%= link_to image_tag(photo.image.url), photo %>
