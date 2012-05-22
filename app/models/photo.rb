@@ -1,6 +1,6 @@
 class Photo < ActiveRecord::Base
   attr_accessible :content, :image, :user_id
-  has_attached_file :image, :styles => {:medium => "300x300", :thumb => "100x100" }
+  has_attached_file :image, :styles => {:side => "220x220", :medium => "300x300", :thumb => "100x100" }
   
   has_many :votes
   belongs_to :user

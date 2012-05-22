@@ -1,8 +1,10 @@
 <% provide(:title, 'Home') %>
 <div class="row">
 <div class="span8">
+<% unless user_signed_in? %>
 <div class="hero-unit">
-<p>How crazy is your Silly Daddy?  Sign up and upload your favorite photo.</p>
+<p>How crazy is your Silly Daddy?  <%= link_to "Sign up" , new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %> to upload photos of your Silly Daddy and to vote for your favorites.</p>
+<% end %>
 </div>
 <ul class="photos">
   <% @photos.each do |photo| %>

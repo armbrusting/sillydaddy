@@ -1,12 +1,11 @@
 <div class="span3 offset1" id="sidebar">
 <div class="spacer"></div>
-<h2>The Silliest Daddies<br /></h2>
+<h3>The Silliest Daddies<br /></h3>
 <ul class="photos">
   <% @top_photos.first(6).each do |photo| %>
     <li>
       <div id="photo">
-      <%= link_to image_tag(photo.image.url), photo %></a>
-    
+      <%= link_to image_tag(photo.image.url(:side)), photo %></a>
 	<div id="picSvotes<%= photo.id %>">
 	<span class="badge badge-info" id="ssnum">Silly Score: <%= photo.votes.count %></span>
 	</div>
