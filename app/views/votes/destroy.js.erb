@@ -1,0 +1,3 @@
+$("#like_form<%= @photo.id.to_s %>").html("<%= escape_javascript(render('static_pages/like', photo: @photo)) %>")
+$("#picvotes<%= @photo.id.to_s %>").html('<p>Silly Votes: <%= @photo.votes.count %></p>')
+$("#picSvotes<%= @photo.id.to_s %>").html('<p>Silly Votes: <%= @photo.votes.count %></p>')

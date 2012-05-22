@@ -1,0 +1,7 @@
+<div id="like_form<%= photo.id %>">
+<% if current_user.likes?(photo) %>
+  <%= render 'unlike', :photo => photo %>
+<% else %>
+  <%= render 'like', :photo => photo %>
+<% end %>
+</div>

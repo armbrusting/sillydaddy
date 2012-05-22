@@ -1,0 +1,29 @@
+<% provide(:title, 'Home') %>
+<div class="row">
+<div class="span8">
+<div class="hero-unit">
+<p>How crazy is your Silly Daddy?  Sign up and upload your favorite photo.</p>
+</div>
+<ul class="photos">
+  <% @photos.each do |photo| %>
+    <li>
+      <div class="row" id="photoinfo">
+	<div class="span1" id="picvotes<%= photo.id %>" style="text-align:center">
+<h4>Silly Score:</h4>
+<h4><%= photo.votes.count %></h4>
+	<% if user_signed_in? %>   
+ 	<%= render 'like_form', :photo => photo %>
+	<% end %>
+	</div>
+
+	<div class="span7" id="photo">
+      <%= link_to image_tag(photo.image.url), photo %>
+      <h3><%= photo.content %></h3>
+      </div>
+</div>
+    </li>
+  <% end %>
+</ul>
+</div>
+<%= render 'static_pages/sidebar' %>
+</div>

@@ -1,0 +1,3 @@
+<%= form_for(current_user.votes.find_by_photo_id(photo), html: { method: :delete }, remote: true) do |f| %>
+<%= f.submit "Unsilly", class: "btn disabled" %>
+<% end %>
