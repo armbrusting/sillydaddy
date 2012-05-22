@@ -1,6 +1,17 @@
 Sillydaddy::Application.routes.draw do
+  devise_for :users
+  
+  root to: 'static_pages#home'
+  
+  match '/about',	to: 'static_pages#about'
+  match '/rules', 	to: 'static_pages#rules'
+  match '/user', 	to: 'users#show'
+  resources :users, :only => [:index, :show]
+  resources :votes
+  resources :photos
+
   # The priority is based upon order of creation:
-  # first created -> highest priority.
+  # first created => highest priority.
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

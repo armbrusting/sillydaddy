@@ -1,14 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Sillydaddy</title>
+  <title><%= full_title(yield(:title)) %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 </head>
 <body>
+  <header class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <%= link_to image_tag("SDlogo2.png"), root_path, id: "logo" %>
+	   <% if user_signed_in? %>
+		<div style="float:right">
+	   		<div class="btn-group">
+  				<button class="btn dropdown-toggle" data-toggle="dropdown">
+					Your Account<span class="caret"></span>
+				</button>
+  				<ul class="dropdown-menu">
+				<% unless current_page?(user_path) %>
+					<li><%= link_to 'Your Photos', user_path %></li>
+				<% end %>
+					<li><%= link_to "Sign out", destroy_user_session_path %></li>
+ 				</ul>
+	   		</div>
+		</div>
+		<div style="float:right">
+	   		<%= link_to 'Upload a Photo of Your Silly Daddy', new_photo_path, :class => 'btn btn-info' %>
+		</div>
+
+	   <% else %>	   
+	   	<div class="btn-group" style="float:right">
+	 		<%= link_to "Sign up" , new_user_registration_path, :class => 'btn' %>
+	   		<%= link_to "Sign in", new_user_session_path,       :class => 'btn' %>
+	   	</div>	    
+	   <% end %>
+      </div>
+    </div>
+  </header>
+<div class="container">
+<p class="notice"><%= notice %></p>
 
 <%= yield %>
 
+</div>
 </body>
 </html>
