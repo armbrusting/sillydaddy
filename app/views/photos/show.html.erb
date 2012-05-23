@@ -1,28 +1,36 @@
 <%- model_class = @photo.class -%>
 <div class="row">
 <div class="span8">
-<h1><%=t '.title', :default => model_class.model_name.human %></h1>
-      	<div id="photo">
-      		<%= image_tag @photo.image.url %>
-      	</div>
-	<div id="piccap">
-		<%= @photo.content %>
-	</div>
-	<div id="picvotes<%= @photo.id %>">
-		<p>Silly Votes: <%= @photo.votes.count %></p>
-	</div>
-	<% if user_signed_in? %>   
- 	<%= render 'static_pages/like_form', :photo => @photo %>
-	<% if @photo.user_id == current_user.id %> 
+    	  <div class="row" id="photoinfo">
+		<div class="span1">
+		  <div id="picvotes<%= @photo.id %>" style="text-align:center">
+		    <h4>Silly Score:</h4>
+		    <h4><%= @photo.votes.count %></h4>
+		  </div>		 
+		  <div id="vote_form<%= @photo.id %>">   		  
+		    <% if user_signed_in? %>
+		    <% if current_user==@photo.user_id %>
+		    <% else %>
+ 		    <%= render 'static_pages/like_form', :photo => @photo %>
+			<% end %>
+		    <% end %>
+		  </div>
+		  <div id="deletephoto">
+			<% if @photo.user_id == current_user.id %> 
  	<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               photo_path(@photo),
               :method => 'delete',
               :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
               :class => 'btn btn-danger' %>
 	<% end %>
-	<% else %>
-	<p>Sign in to vote this Daddy Silly</p>
-   	<% end %>
+		</div>
+		</div>
+		<div class="span7" id="photo">
+		  <%= image_tag @photo.image.url %>
+      		<h3><%= @photo.content %></h3>
+		</div>
+	  </div>
+
 
 </div>
 <div class="span4">

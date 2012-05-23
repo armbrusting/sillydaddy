@@ -17,8 +17,7 @@
 	   <% if user_signed_in? %>
 		<div style="float:right">
 	   		<div class="btn-group">
-  				<button class="btn dropdown-toggle" data-toggle="dropdown">
-					Your Account<span class="caret"></span>
+  				<button class="btn dropdown-toggle" data-toggle="dropdown">Account<span class="caret"></span>
 				</button>
   				<ul class="dropdown-menu">
 				<% unless current_page?(user_path) %>
@@ -42,8 +41,6 @@
     </div>
   </header>
 <div class="container">
-<p class="notice"><%= notice %></p>
-
 <%= yield %>
 
 </div>

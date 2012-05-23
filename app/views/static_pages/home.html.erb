@@ -2,31 +2,39 @@
 <div class="row">
 <div class="span8">
 	<% unless user_signed_in? %>
-	<div class="hero-unit">
-	<p>How crazy is your Silly Daddy?  <%= link_to "Sign up" , new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %> to upload photos of your Silly Daddy and to vote for your favorites.</p>
+	<div class="hero-unit" style="text-align:center">
+	<p>How crazy is your Silly Daddy?<br /><%= link_to "Sign up" , new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %> to upload photos of your Silly Daddy and to vote for your favorites.</p>
 	</div>
 	<% end %>
 	<ul class="photos">
  	<% @photos.each do |photo| %>
     	<li>
-      		<div class="row" id="photoinfo">
-		 <div class="span1" id="picvotes<%= photo.id %>" style="text-align:center">
-		  <h4>Silly Score:</h4>
-		  <h4><%= photo.votes.count %></h4>
-<div id="like_form<%= photo.id %>">   		  
-<% if user_signed_in? %>
- 		  <%= render 'like_form', :photo => photo %>
-		  <% end %>
-</div>
-		 </div>
-		 <div class="span7" id="photo">
+      	  <div class="row" id="photoinfo">
+		<div class="span1">
+		  <div id="picvotes<%= photo.id %>" style="text-align:center">
+		    <h4>Silly Score:</h4>
+		    <h4><%= photo.votes.count %></h4>
+		  </div>		 
+		  <div id="vote_form<%= photo.id %>" style="text-align:center">   		  
+		    <% if user_signed_in? %>
+		    <% if current_user==photo.user_id %>
+		    <% else %>
+ 		    <%= render 'like_form', :photo => photo %>
+			<% end %>
+		    <% end %>
+		  </div>
+		</div>
+		<div class="span7" id="photo">
 		  <%= link_to image_tag(photo.image.url), photo %>
 		  <h3><%= photo.content %></h3>
-      		 </div>
-		</div>
+      		</div>
+	  </div>
     	</li>
   	<% end %>
 	</ul>
+<div id="pagination" style="text-align:center">
+<%= will_paginate @photos %>
+</div>
 </div>
 <%= render 'static_pages/sidebar' %>
 

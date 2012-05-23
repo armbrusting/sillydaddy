@@ -1,3 +1,3 @@
-$("#like_form<%= @photo.id.to_s %>").html("<%= escape_javascript(render('static_pages/unlike', photo: @photo)) %>")
+$("#vote_form<%= @photo.id.to_s %>").html("<%= escape_javascript(render('static_pages/unlike', photo: @photo)) %>")
 $("#picvotes<%= @photo.id.to_s %>").html('<h4>Silly Score:</h4><h4><%= @photo.votes.count %></h4>')
 $("#picSvotes<%= @photo.id.to_s %>").html('<span class="badge badge-info" id="ssnum">Silly Score: <%= @photo.votes.count %></span>')

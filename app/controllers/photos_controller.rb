@@ -17,7 +17,7 @@ class PhotosController < ApplicationController
   # GET /photos/1.json
   def show
     @photo = Photo.find(params[:id])
-    @top_photos = Photo.all.sort_by { |u| -u.votes.count } 
+    @top_photos = Photo.limit(3).sort_by { |u| -u.votes.count } 
 
     respond_to do |format|
       format.html # show.html.erb
@@ -29,7 +29,8 @@ class PhotosController < ApplicationController
   # GET /photos/new.json
   def new
     @photo = Photo.new
-
+    @top_photos = Photo.limit(3).sort_by { |u| -u.votes.count } 
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @photo }
