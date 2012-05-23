@@ -4,8 +4,10 @@ class Photo < ActiveRecord::Base
 		    :styles => {:side => "204x204", 
 				:medium => "300x300", 
 				:thumb => "100x100" },
+	:storage => :s3,
 	:s3_credentials => "::Rails.root/config/s3.yml",
-        :path => "sillydaddy/:attachment/:style/:id.:extension"
+        :path => "sillydaddy/:attachment/:style/:id.:extension",
+	:bucket => 'SillyDaddy'
   
   has_many :votes
   belongs_to :user
