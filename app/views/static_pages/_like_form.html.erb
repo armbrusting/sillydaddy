@@ -1,5 +1,5 @@
 <% if current_user.likes?(photo) %>
-  <%= render 'unlike', :photo => photo %>
+  <%= render 'static_pages/unlike', :photo => photo %>
 <% else %>
-  <%= render 'like', :photo => photo %>
+  <%= render 'static_pages/like', :photo => photo %>
 <% end %>

@@ -2,17 +2,14 @@
 <div class="row">
 <div class="span8">
     	  <div class="row" id="photoinfo">
-		<div class="span1">
-		  <div id="picvotes<%= @photo.id %>" style="text-align:center">
+		<div class="span1" style="text-align:center">
+		  <div id="picvotes<%= @photo.id %>">
 		    <h4>Silly Score:</h4>
 		    <h4><%= @photo.votes.count %></h4>
 		  </div>		 
 		  <div id="vote_form<%= @photo.id %>">   		  
 		    <% if user_signed_in? %>
-		    <% if current_user==@photo.user_id %>
-		    <% else %>
  		    <%= render 'static_pages/like_form', :photo => @photo %>
-			<% end %>
 		    <% end %>
 		  </div>
 		  <div id="deletephoto">
