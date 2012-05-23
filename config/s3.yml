@@ -1,0 +1,9 @@
+development:
+  bucket: SillyDaddy
+  access_key_id: AKIAJX7SNY5UUYGK5RYQ
+  secret_access_key: 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
+
+production:
+  bucket: SillyDaddy
+  access_key_id: AKIAJX7SNY5UUYGK5RYQ
+  secret_access_key: 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
