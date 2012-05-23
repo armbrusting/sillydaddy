@@ -4,10 +4,12 @@ class Photo < ActiveRecord::Base
 		    :styles => {:side => "204x204", 
 				:medium => "300x300", 
 				:thumb => "100x100" },
-	:storage => :s3,
-	:s3_credentials => "::Rails.root/config/s3.yml",
-        :path => "sillydaddy/:attachment/:style/:id.:extension",
-	:bucket => 'SillyDaddy'
+    :storage => :s3,
+    :bucket => ENV['S3_BUCKET_NAME'],
+    :s3_credentials => {
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+    }
   
   has_many :votes
   belongs_to :user
