@@ -5,7 +5,7 @@ class Photo < ActiveRecord::Base
 				:medium => "300x300", 
 				:thumb => "100x100" },
 	:s3_credentials => "::Rails.root/config/s3.yml",
-        :path => "http://sillydaddy.herokuapp.com/:attachment/:style/:id.:extension"
+        :path => "sillydaddy/:attachment/:style/:id.:extension"
   
   has_many :votes
   belongs_to :user
